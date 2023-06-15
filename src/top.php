@@ -82,14 +82,14 @@
 		</ol>
 		<div class="carousel-inner" role="listbox">
 		<div class="item active">
-			<img src="img/food1.jpg" alt="first image"></img>
+			<img src="../img/food1.jpg" alt="first image"></img>
 			<div class="carousel-caption">
 				<h2>First Image</h2>
 				<p>Some text here</p>
 			</div>
 		</div>
 		<div class="item">
-			<img src="img/food2.jpg" alt="second image"></img>
+			<img src="../img/food2.jpg" alt="second image"></img>
 			<div class="carousel-caption">
 				<h2>Second Image</h2>
 				<p>Some text here</p>

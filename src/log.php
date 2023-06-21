@@ -7,14 +7,17 @@
 	$password = $_POST["pswd"];
 	$password = md5($password);
 
-	$sql = "SELECT * FROM customers WHERE email='$email' AND password='$password'";
-	$result = $conn->query($sql);
-	if ($result->rowcount()) {
-		$row = $result->fetch();
-		$_SESSION['id'] = $row['CustomerID'];
-		$_SESSION['email'] = $row['email'];
-		$_SESSION['cname'] = $row['ContactName'];
-		$_SESSION['name'] = $row['CustomerName'];
+	$stmt = $conn->prepare("SELECT * FROM customers WHERE email=:email AND password=:password");
+	$stmt->bindParam(':email', $email);
+	$stmt->bindParam(':password', $password);
+	$stmt->execute();
+	$result = $stmt->fetch();
+	if (gettype($result)==gettype(array())) {
+		echo $result['CustomerName'];
+		$_SESSION['id'] = $result['CustomerID'];
+		$_SESSION['email'] = $result['email'];
+		$_SESSION['cname'] = $result['ContactName'];
+		$_SESSION['name'] = $result['CustomerName'];
 		header("location:home.php");
 		exit;
 	} else {
